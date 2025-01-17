@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 import DocDetailComp from "./DocDetailComp";
-import { ICardData } from "@/types/types";
+
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setPdfFile } from "@/redux/PdfFileSlice";
