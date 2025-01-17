@@ -12,7 +12,7 @@ import { IUser, login } from "@/redux/UserSlice";
 import { jwtDecode, JwtPayload } from "jwt-decode";
 
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
-import axios from "axios";
+
 import useLoginWithGoogle from "@/hooks/useLoginWithGoogle";
 import AiLoader from "@/components/AllLoader";
 const SignInPage = () => {

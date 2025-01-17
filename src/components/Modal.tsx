@@ -16,8 +16,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onAddDoc }) => {
   const [title, setTitle] = useState<string>("");
   const [file, setFile] = useState<File | null>(null);
   const dispatch = useDispatch();
-
-  const { isLoading, data, createNewDoc } = useCreateDoc({ title, file });
+ console.log(onAddDoc);
+  const{ isLoading, data, createNewDoc } = useCreateDoc({ title, file });
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {

@@ -22,7 +22,7 @@ const DeleteModal = ({ isOpen, isClose, title, _id, docurl }: IDeleteModal) => {
   const handleDeleteDoc = async () => {
     try {
       setIsLoading(true);
-      const data = await axios.delete(
+       await axios.delete(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/doc/delete-doc/${_id}`,
         {
           data: {

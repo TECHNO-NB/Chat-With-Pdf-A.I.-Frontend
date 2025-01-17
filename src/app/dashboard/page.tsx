@@ -5,7 +5,7 @@ import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Modal from "@/components/Modal";
 import { Button } from "@/components/ui/button";
 import { ICardData } from "@/types/types";
-import pdfToText from "@/utils/PdfToText";
+
 import axios from "axios";
 import { motion, Variants } from "framer-motion";
 import React, { useEffect, useState } from "react";
@@ -17,7 +17,7 @@ const Page = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [file, setFile] = useState<File | null>(null);
   const [title, setTitle] = useState<string>("");
-
+    console.log(file,title);
   const isDocRefresh = useSelector(
     (state: any) => state.docRefresh.isDocRefresh
   );

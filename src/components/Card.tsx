@@ -19,7 +19,7 @@ const Card: React.FC<CardProps> = ({ data, size }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
-
+ console.log(size)
   const handleViewDoc = async (doc: File): Promise<void> => {
     setIsLoading(true);
     dispatch(setPdfFile(doc));
