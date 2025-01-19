@@ -24,7 +24,7 @@ const secondaryVariant = {
     opacity: 1,
   },
 };
-// @typescript-eslint/no-unused-expressions
+
 export const FileUpload = ({
   onChange,
 }: {
@@ -33,7 +33,6 @@ export const FileUpload = ({
   const [files, setFiles] = useState<File[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // @typescript-eslint/no-unused-expressions
   const handleFileChange = (newFiles: File[]) => {
     setFiles((prevFiles) => [...prevFiles, ...newFiles]);
     onChange && onChange(newFiles);
@@ -73,12 +72,10 @@ export const FileUpload = ({
           </p>
 
           <div className="relative w-full mt-1 max-w-xl mx-auto">
-            @typescript-eslint/no-unused-expressions
             {files.length > 0 &&
               files.map((file, idx) => (
                 <motion.div
-                  key={"file" + idx}
-                  layoutId={idx === 0 ? "file-upload" : "file-upload-" + idx}
+                  key={idx}
                   className={cn(
                     "relative overflow-hidden z-40 bg-white dark:bg-neutral-900 flex flex-col items-start justify-start md:h-24 p-4 mt-4 w-full mx-auto rounded-md",
                     "shadow-sm"
@@ -88,7 +85,6 @@ export const FileUpload = ({
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      layout
                       className="text-base text-neutral-700 dark:text-neutral-300 truncate max-w-xs"
                     >
                       {file.name}
@@ -96,7 +92,6 @@ export const FileUpload = ({
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      layout
                       className="rounded-lg px-2 py-1 w-fit flex-shrink-0 text-sm text-neutral-600 dark:bg-neutral-800 dark:text-white shadow-input"
                     >
                       {(file.size / (1024 * 1024)).toFixed(2)} MB
@@ -107,8 +102,7 @@ export const FileUpload = ({
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      layout
-                      className="px-1 py-0.5 rounded-md bg-gray-100 dark:bg-neutral-800 "
+                      className="px-1 py-0.5 rounded-md bg-gray-100 dark:bg-neutral-800"
                     >
                       {file.type}
                     </motion.p>
@@ -116,7 +110,6 @@ export const FileUpload = ({
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      layout
                     >
                       modified{" "}
                       {new Date(file.lastModified).toLocaleDateString()}
@@ -165,14 +158,12 @@ export const FileUpload = ({
   );
 };
 
-// @typescript-eslint/no-unused-expressions
 export function GridPattern() {
   const columns = 41;
   const rows = 11;
   return (
-    <div className="flex bg-gray-100 dark:bg-neutral-900 flex-shrink-0 flex-wrap justify-center items-center gap-x-px gap-y-px  scale-105">
-      {/* @typescript-eslint/no-unused-expressions */}
-       {Array.from({ length: rows }).map((_, row) =>
+    <div className="flex bg-gray-100 dark:bg-neutral-900 flex-shrink-0 flex-wrap justify-center items-center gap-x-px gap-y-px scale-105">
+      {Array.from({ length: rows }).map((_, row) =>
         Array.from({ length: columns }).map((_, col) => {
           const index = row * columns + col;
           return (

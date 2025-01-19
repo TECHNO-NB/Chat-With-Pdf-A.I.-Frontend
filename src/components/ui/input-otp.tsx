@@ -5,7 +5,7 @@ import { OTPInput, OTPInputContext } from "input-otp"
 import { Dot } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-
+// @typescript-eslint/no-unused-expressions
 const InputOTP = React.forwardRef<
   React.ElementRef<typeof OTPInput>,
   React.ComponentPropsWithoutRef<typeof OTPInput>
