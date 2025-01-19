@@ -21,6 +21,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "NBPG AI.",
   description: "Chat with pdf using nbpg AI.",
+  icons: {
+    icon: "./logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -30,6 +33,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="./logo.png" sizes="any"></link>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
