@@ -35,7 +35,7 @@ export const FileUpload = ({
 
   const handleFileChange = (newFiles: File[]) => {
     setFiles((prevFiles) => [...prevFiles, ...newFiles]);
-    onChange && onChange(newFiles);
+    if (onChange) onChange(newFiles);
   };
 
   const handleClick = () => {
@@ -47,7 +47,7 @@ export const FileUpload = ({
     noClick: true,
     onDrop: handleFileChange,
     onDropRejected: (error) => {
-      console.log(error);
+      console.error(error);
     },
   });
 
@@ -121,6 +121,8 @@ export const FileUpload = ({
               <motion.div
                 layoutId="file-upload"
                 variants={mainVariant}
+                initial="initial"
+                animate="animate"
                 transition={{
                   type: "spring",
                   stiffness: 300,
@@ -148,7 +150,9 @@ export const FileUpload = ({
             {!files.length && (
               <motion.div
                 variants={secondaryVariant}
-                className="absolute opacity-0 border border-dashed border-sky-400 inset-0 z-30 bg-transparent flex items-center justify-center h-32 mt-4 w-full max-w-[8rem] mx-auto rounded-md"
+                initial="initial"
+                animate="animate"
+                className="absolute border border-dashed border-sky-400 inset-0 z-30 bg-transparent flex items-center justify-center h-32 mt-4 w-full max-w-[8rem] mx-auto rounded-md"
               ></motion.div>
             )}
           </div>
