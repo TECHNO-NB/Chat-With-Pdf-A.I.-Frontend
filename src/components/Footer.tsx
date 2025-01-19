@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <div className=" relative bottom-0 border-t-4  flex items-center justify-center max-h-fit w-[100vw] mt-10 bg-[#24262b] text-white">
       <MaxWidthWrapper className="w-full">
-        <div className="main w-full pb-6 flex justify-around  sm:flex-row flex-wrap gap-4 mt-6 sm:gap-0">
+        <div className="main w-full pb-6 flex justify-around   sm:flex-row flex-wrap gap-4 mt-6 sm:gap-0">
           <div className="flex flex-col">
             <div className="head text-xl font-bold border-b-2 w-10 pb-2 border-red-700">
               Company
