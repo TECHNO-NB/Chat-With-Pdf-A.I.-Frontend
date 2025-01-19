@@ -24,7 +24,7 @@ const secondaryVariant = {
     opacity: 1,
   },
 };
-
+// @typescript-eslint/no-unused-expressions
 export const FileUpload = ({
   onChange,
 }: {
@@ -33,6 +33,7 @@ export const FileUpload = ({
   const [files, setFiles] = useState<File[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // @typescript-eslint/no-unused-expressions
   const handleFileChange = (newFiles: File[]) => {
     setFiles((prevFiles) => [...prevFiles, ...newFiles]);
     onChange && onChange(newFiles);
@@ -65,15 +66,14 @@ export const FileUpload = ({
           onChange={(e) => handleFileChange(Array.from(e.target.files || []))}
           className="hidden"
         />
-        <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]">
-          
-        </div>
+        <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]"></div>
         <div className="flex flex-col items-center justify-center">
           <p className="relative z-20 font-sans font-bold text-white dark:text-neutral-300 text-base">
             Upload file
           </p>
-        
+
           <div className="relative w-full mt-1 max-w-xl mx-auto">
+            @typescript-eslint/no-unused-expressions
             {files.length > 0 &&
               files.map((file, idx) => (
                 <motion.div
@@ -152,7 +152,6 @@ export const FileUpload = ({
                 )}
               </motion.div>
             )}
-
             {!files.length && (
               <motion.div
                 variants={secondaryVariant}
@@ -166,12 +165,14 @@ export const FileUpload = ({
   );
 };
 
+// @typescript-eslint/no-unused-expressions
 export function GridPattern() {
   const columns = 41;
   const rows = 11;
   return (
     <div className="flex bg-gray-100 dark:bg-neutral-900 flex-shrink-0 flex-wrap justify-center items-center gap-x-px gap-y-px  scale-105">
-      {Array.from({ length: rows }).map((_, row) =>
+      {/* @typescript-eslint/no-unused-expressions */}
+       {Array.from({ length: rows }).map((_, row) =>
         Array.from({ length: columns }).map((_, col) => {
           const index = row * columns + col;
           return (
