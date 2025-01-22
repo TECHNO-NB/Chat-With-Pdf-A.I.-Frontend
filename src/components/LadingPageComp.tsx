@@ -31,7 +31,7 @@ const LadingPageComp: React.FC = () => {
        
         className="text-3xl  font-bold text-black md:text-4xl"
       >
-        NBPG AI.
+        CHAT AI.
       </motion.h1>
 
       <div className="max-w-full mt-0">

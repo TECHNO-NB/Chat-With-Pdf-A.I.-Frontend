@@ -19,8 +19,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "NBPG AI.",
-  description: "Chat with pdf using nbpg AI.",
+  title: "Chat AI.",
+  description: "Chat with pdf using Chat AI.",
   icons: {
     icon: "./logo.png",
   },

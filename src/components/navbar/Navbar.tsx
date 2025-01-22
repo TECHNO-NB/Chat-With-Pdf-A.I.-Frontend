@@ -12,23 +12,24 @@ import { RootState } from "@/redux/store";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import { motion, Variants } from "framer-motion";
 
-
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
   const user = useSelector((state: RootState) => state.user);
 
   const fadeUpAnimation: Variants = {
     hidden: { y: -10, opacity: 0 },
-    show: { y: 0, opacity: 1, transition: { 
-      staggerChildren:0.3,
-      duration: 0.5 } },
+    show: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        duration: 0.5,
+      },
+    },
   };
 
   return (
-    <nav
-   
-      className="w-[100vw] h-16 z-50 text-black text-center flex border-4 bg-white"
-    >
+    <nav className="w-[100vw] h-16 z-50 text-black text-center flex border-4 bg-white">
       <MaxWidthWrapper className="w-full">
         <div className="flex justify-between items-center h-full">
           <div className="logo flex">
@@ -37,7 +38,7 @@ const Navbar: React.FC = () => {
               href="/"
             >
               <Image className="w-10" src={aiimg} alt="img" quality={100} />
-              Nbpgai.
+              Chatai.
             </Link>
           </div>
           <div>
@@ -59,10 +60,11 @@ const Navbar: React.FC = () => {
             } bg-white text-black top-16 md:hidden transition-all ease-in-out`}
           >
             <motion.ul
-               initial="hidden"
-               animate="show"
-               variants={fadeUpAnimation}
-             className="flex items-center mt-4 flex-col gap-4 text-xl">
+              initial="hidden"
+              animate="show"
+              variants={fadeUpAnimation}
+              className="flex items-center mt-4 flex-col gap-4 text-xl"
+            >
               <li onClick={() => setOpen(false)}>
                 <Link href="/">Home</Link>
               </li>
