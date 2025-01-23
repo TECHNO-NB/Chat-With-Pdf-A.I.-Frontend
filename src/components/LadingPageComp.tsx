@@ -9,11 +9,11 @@ import { motion, Variants } from "framer-motion";
 import Footer from "./Footer";
 const LadingPageComp: React.FC = () => {
   const fadeInAnimation: Variants = {
-    hidden: { opacity: 0, y: -20},
+    hidden: { opacity: 0, y: -20 },
     show: {
       opacity: 1,
       y: 0,
-      x:0,
+      x: 0,
       transition: {
         staggerChildren: 0.2,
         duration: 1,
@@ -27,38 +27,28 @@ const LadingPageComp: React.FC = () => {
       variants={fadeInAnimation}
       className="pt-6"
     >
-      <motion.h1
-       
-        className="text-3xl  font-bold text-black md:text-4xl"
-      >
+      <motion.h1 className="text-3xl  font-bold text-black md:text-4xl">
         CHAT AI.
       </motion.h1>
 
       <div className="max-w-full mt-0">
-        <motion.h1  className="text-4xl font-bold ">
-          Chat with your
-        </motion.h1>
-        <motion.h1  className="text-4xl font-bold">
+        <motion.h1 className="text-4xl font-bold ">Chat with your</motion.h1>
+        <motion.h1 className="text-4xl font-bold">
           <span className="text-blue-500">documents</span> in seconds
         </motion.h1>
-        <motion.p
-        
-          className="text-sm"
-        >
+        <motion.p className="text-sm">
           Nbpg allows you to have conversations with any PDF documents, Simply
           upload your
         </motion.p>
-        <motion.p    className="text-sm">file and start asking questions right away.</motion.p>
+        <motion.p className="text-sm">
+          file and start asking questions right away.
+        </motion.p>
       </div>
       <Link href="/auth">
         <Button className="mt-2 w-[50%] md:max-w-sm md:mt-4 md:h-10 gap-2 bg-blue-700">
           Get Started <FaArrowRight className="font-thin" />
         </Button>
       </Link>
-
-      {/* <div className="mt-4 md:max-w-screen-md md:mt-8 md:border-8 border-y-gray-400">
-        <Image src={pdfImg} alt="pdf image" />
-      </div> */}
 
       <div>
         <div className="relative isolate">
@@ -110,7 +100,7 @@ const LadingPageComp: React.FC = () => {
           <Guide />
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </motion.div>
   );
 };

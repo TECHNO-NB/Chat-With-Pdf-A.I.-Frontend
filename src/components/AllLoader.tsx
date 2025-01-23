@@ -3,7 +3,7 @@ import { ThreeDots } from "react-loader-spinner";
 
 const AllLoader = () => {
   return (
-    <div className=" fixed top-20">
+    <div className="ml-10">
     <ThreeDots
       visible={true}
       height="80"

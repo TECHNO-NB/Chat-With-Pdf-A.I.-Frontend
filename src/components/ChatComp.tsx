@@ -106,7 +106,8 @@ const ChatComp = () => {
                       : "bg-gray-300 text-black"
                   } p-3 rounded-lg max-w-[80%] `}
                 >
-                  {msg.message}
+                  {
+                  msg.message}
                 </div>
               </div>
             </div>
@@ -120,7 +121,7 @@ const ChatComp = () => {
             placeholder="Ask a question..."
             onChange={(e) => setUserInput(e.target.value)}
             value={userInput}
-          />
+            />
           <Button onClick={handleSend} className="h-full  py-2 gap-2">
             {isLoading ? (
               <ButtonLoader />
