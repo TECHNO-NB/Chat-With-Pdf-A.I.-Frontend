@@ -11,7 +11,7 @@ const Footer = () => {
       <MaxWidthWrapper className="w-full">
         <div className="main w-full pb-6 flex justify-around   sm:flex-row flex-wrap gap-4 mt-6 sm:gap-0">
           <div className="flex flex-col">
-            <h1 className="text-3xl font-extrabold"><span className="text-3xl mt-4 text-blue-600">&copy;</span> Copyright By ChatA.I</h1>
+            <h1 className=" text-1xl sm:text-3xl font-extrabold"><span className="text-3xl mt-4 text-blue-600">&copy;</span> Copyright By ChatA.I</h1>
             <div className="head text-xl font-extrabold border-b-2 mt-4 text-center">
               Follow Us
             </div>
