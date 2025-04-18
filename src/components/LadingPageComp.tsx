@@ -37,7 +37,7 @@ const LadingPageComp: React.FC = () => {
           <span className="text-blue-500">documents</span> in seconds
         </motion.h1>
         <motion.p className="text-sm">
-          Nbpg allows you to have conversations with any PDF documents, Simply
+          Chat A.I allows you to have conversations with any PDF documents, Simply
           upload your
         </motion.p>
         <motion.p className="text-sm">

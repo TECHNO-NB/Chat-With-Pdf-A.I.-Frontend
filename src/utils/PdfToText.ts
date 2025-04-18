@@ -22,13 +22,12 @@ const pdfToText = async (filePath: string) => {
 
   const splittedDocs = await splitter.splitDocuments(docs);
 
-  console.log(splittedDocs[0]);
-
-  const text = "hello world";
-  // @ts-ignore
-  const vector = await embeddings.embedQuery(splittedDocs?.pageContent);
-
-  return splittedDocs[0];
+  const simplifiedDocs = splittedDocs.map(doc => ({
+    pageContent: doc.pageContent,
+    metadata: doc.metadata,
+  }));
+  
+  return simplifiedDocs;
 };
 
 export default pdfToText;

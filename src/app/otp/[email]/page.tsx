@@ -73,6 +73,9 @@ const Page = ({ params }: { params: Promise<{ email: string }> }) => {
         {isLoading ? <ButtonLoader /> : "SUBMIT"}
       </Button>
       {data && <p className="text-green-500 mt-4">Verification successful!</p>}
+
+       <p className="mt-4">Didn't get a code yet ??</p>
+      <Button className="mt-1">Resend Code</Button>
     </MaxWidthWrapper>
   );
 };

@@ -56,13 +56,14 @@ const SignInPage = () => {
     }
   }, [data, error, router]);
 
+
   const loginWithGoogleFun = async (token: JwtPayload) => {
     await loginWithGoogle({
       url: "api/v1/users/login-with-google",
       token: token,
     });
     if (res) {
-      console.log(res)
+      console.log(res);
       const user: IUser = {
         _id: res.data._id,
         username: res.data.username,
@@ -80,7 +81,7 @@ const SignInPage = () => {
     <MaxWidthWrapper className="mt-24 overflow-x-hidden  overflow-hidden max-h-[100vw]">
       <div className="flex items-center justify-center flex-col w-full">
         <h1 className="font-bold text-3xl text-blue-600">Signin</h1>
-        {loader ? (<AiLoader/>) : null}
+        {loader ? <AiLoader /> : null}
         <div className="w-[90%] sm:w-[40%] lg:w-[30%] flex flex-col gap-2 sm:gap-0 text-center">
           <Input
             onChange={(e) => setEmail(e.target.value)}

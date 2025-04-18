@@ -1,38 +1,66 @@
 import React from "react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import { RiFacebookCircleFill } from "react-icons/ri";
-import { FaLinkedin } from "react-icons/fa";
-import { FaSquareInstagram } from "react-icons/fa6";
-import { FaYoutube } from "react-icons/fa6";
+import { FaLinkedin, FaSquareInstagram, FaYoutube } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <div className=" relative bottom-0 border-t-4  flex items-center justify-center max-h-fit w-[100vw] mt-10 bg-white text-black">
-      <MaxWidthWrapper className="w-full">
-        <div className="main w-full pb-6 flex justify-around   sm:flex-row flex-wrap gap-4 mt-6 sm:gap-0">
-          <div className="flex flex-col">
-            <h1 className=" text-1xl sm:text-3xl font-extrabold"><span className="text-3xl mt-4 text-blue-600">&copy;</span> Copyright By ChatA.I</h1>
-            <div className="head text-xl font-extrabold border-b-2 mt-4 text-center">
-              Follow Us
-            </div>
-            <ul className="mt-2 text-[#000] text-center flex items-center justify-center text-3xl gap-2">
-              <li>
+    <footer className="bg-white text-gray-800 border-t-4 mt-20 w-[100vw] ">
+      <MaxWidthWrapper className="px-4 sm:px-8 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 py-10">
+          {/* Logo & Description */}
+          <div className="flex flex-col gap-4">
+            <h1 className="text-2xl font-bold text-blue-600">&copy; ChatA.I</h1>
+            <p className="text-sm text-gray-600">
+              Revolutionizing conversations with intelligent AI.
+            </p>
+            <div className="flex justify-center text-center gap-4 text-2xl mt-2">
+              <a href="#" className="text-gray-600 hover:text-blue-600 transition">
                 <RiFacebookCircleFill />
-              </li>
-              <li>
+              </a>
+              <a href="#" className="text-gray-600 hover:text-pink-500 transition">
                 <FaSquareInstagram />
-              </li>
-              <li>
+              </a>
+              <a href="#" className="text-gray-600 hover:text-blue-500 transition">
                 <FaLinkedin />
-              </li>
-              <li>
+              </a>
+              <a href="#" className="text-gray-600 hover:text-red-600 transition">
                 <FaYoutube />
-              </li>
+              </a>
+            </div>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="flex flex-col">
+            <h2 className="text-lg font-semibold mb-4 border-b pb-1">
+              Quick Links
+            </h2>
+            <ul className="space-y-2 text-sm text-gray-700">
+              <li><a href="#" className="hover:text-blue-500 transition">Home</a></li>
+              <li><a href="#" className="hover:text-blue-500 transition">Dashboard</a></li>
+              <li><a href="#" className="hover:text-blue-500 transition">Pricing</a></li>
+              <li><a href="#" className="hover:text-blue-500 transition">Contact</a></li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div className="flex flex-col">
+            <h2 className="text-lg font-semibold mb-4 border-b pb-1">
+              Contact Us
+            </h2>
+            <ul className="space-y-2 text-sm text-gray-700">
+              <li>Email: support@chatai.com</li>
+              <li>Phone: +1 234 567 890</li>
+              <li>Address: 123 AI Avenue, Technova</li>
             </ul>
           </div>
         </div>
+
+        <div className="text-center text-xs text-gray-500 py-4 border-t">
+          &copy; {new Date().getFullYear()} ChatA.I — All rights reserved.
+        </div>
       </MaxWidthWrapper>
-    </div>
+    </footer>
   );
 };
 

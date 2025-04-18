@@ -5,9 +5,10 @@ import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Modal from "@/components/Modal";
 import { Button } from "@/components/ui/button";
 import { ICardData } from "@/types/types";
-
+import toast from "react-hot-toast";
 import axios from "axios";
 import { motion, Variants } from "framer-motion";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -17,28 +18,25 @@ const Page = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [file, setFile] = useState<File | null>(null);
   const [title, setTitle] = useState<string>("");
-    console.log(file,title);
+
+  const router = useRouter();
+
   const isDocRefresh = useSelector(
     (state: any) => state.docRefresh.isDocRefresh
   );
 
   const fadeInAnimation: Variants = {
-    hidden: { opacity: 0, y: -20,x:-40},
+    hidden: { opacity: 0, y: -20, x: -40 },
     show: {
       opacity: 1,
       y: 0,
-      x:0,
+      x: 0,
       transition: {
         staggerChildren: 0.3,
         duration: 1,
       },
     },
-
-
   };
-
-  
-
 
   useEffect(() => {
     const fetchDocuments = async () => {
@@ -60,6 +58,11 @@ const Page = () => {
   }, [isDocRefresh]);
 
   const addNewDocument = (): void => {
+    if (docData.length >= 3) {
+      toast.error("Free limit hit. Upgrade to continue")
+      router.push("/pricing");
+      return;
+    }
     setModalOpen(true);
   };
   const handleAddDoc = async (file: File | null | undefined, title: string) => {
@@ -84,7 +87,12 @@ const Page = () => {
 
   return (
     <MaxWidthWrapper className=" w-full mt-6">
-      <motion.div  initial={{opacity:0,y:-20}} animate={{opacity:1,y:0}} transition={{duration:1}} className="flex justify-between items-center w-full">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="flex justify-between items-center w-full"
+      >
         <h1 className="text-2xl font-bold">Dashboard</h1>
         <Button onClick={addNewDocument} className="bg-blue-700">
           Add Documents
@@ -99,7 +107,12 @@ const Page = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <motion.div  initial="hidden" animate="show" variants={fadeInAnimation} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={fadeInAnimation}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
           {docData &&
             docData.map((val) => (
               <Card data={val} size={false} key={val._id} />

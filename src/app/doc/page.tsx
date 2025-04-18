@@ -5,7 +5,6 @@ import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import fileUrl from "@/assets/A 8081.pdf";
 import ChatComp from "@/components/ChatComp";
 import { useSelector } from "react-redux";
-
 import pdfToText from "@/utils/PdfToText";
 
 const Page: React.FC = () => {
@@ -13,7 +12,13 @@ const Page: React.FC = () => {
   const data = useSelector((state: any) => state.pdfFile);
 
   useEffect(() => {
-    pdfToText(data.file);
+
+    const changePdfToText=async()=>{
+
+   const text=await pdfToText(data.file);
+   console.log("pdfTOTExt",text)
+    }
+    changePdfToText();
     fetch(fileUrl)
       .then((response) => response.blob())
       .then((blob) => {
