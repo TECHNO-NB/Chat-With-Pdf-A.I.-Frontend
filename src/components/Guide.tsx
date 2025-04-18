@@ -38,7 +38,7 @@ const Guide = () => {
         ))}
       </div>
 
-      <div className="relative mt-14 sm:mt-20">
+      <div className="relative mt-12 sm:mt-20">
         <div
           className="absolute inset-0 left-10 z-0 blur-2xl opacity-30"
           style={{

@@ -5,7 +5,7 @@ import { FaLinkedin, FaSquareInstagram, FaYoutube } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="bg-white text-gray-800 border-t-4 mt-20 w-[100vw] ">
+    <footer className="bg-white text-gray-800 border-t-4 mt-12 sm:mt-20 w-[100vw] ">
       <MaxWidthWrapper className="px-4 sm:px-8 w-full">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 py-10">
           {/* Logo & Description */}
