@@ -9,6 +9,10 @@ export async function middleware(request: NextRequest) {
   let decodedAccessToken: JwtPayload | null = null;
   let decodedRefreshToken: JwtPayload | null = null;
 
+  if(!decodedAccessToken && !decodedRefreshToken){
+    console.log("No decoded")
+  }
+
   try {
     if (accessToken) {
       decodedAccessToken = jwtDecode<JwtPayload>(accessToken);
