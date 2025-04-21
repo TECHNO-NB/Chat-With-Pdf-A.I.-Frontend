@@ -4,6 +4,7 @@ const nextConfig = {
       // Disable canvas and encoding aliases
       config.resolve.alias.canvas = false;
       config.resolve.alias.encoding = false;
+      checkCompatibility: false,
   
       // Add a rule to handle PDF files
       config.module.rules.push({

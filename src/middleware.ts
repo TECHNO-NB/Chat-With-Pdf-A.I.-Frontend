@@ -10,7 +10,7 @@ export async function middleware(request: NextRequest) {
   let decodedRefreshToken: JwtPayload | null = null;
 
   if(!decodedAccessToken && !decodedRefreshToken){
-    console.log("No decoded")
+    
   }
 
   try {
@@ -34,7 +34,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/auth", request.url));
   }
 ` `
-  if (!accessToken && !refreshToken && request.nextUrl.pathname.startsWith("/doc")) {
-    return NextResponse.rewrite(new URL("/auth", request.url));
-  }
+  // if (!accessToken && !refreshToken && request.nextUrl.pathname.startsWith("/doc")) {
+  //   return NextResponse.rewrite(new URL("/auth", request.url));
+  // }
 }

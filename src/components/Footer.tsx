@@ -49,9 +49,9 @@ const Footer = () => {
               Contact Us
             </h2>
             <ul className="space-y-2 text-sm text-gray-700">
-              <li>Email: support@chatai.com</li>
-              <li>Phone: +1 234 567 890</li>
-              <li>Address: 123 AI Avenue, Technova</li>
+              <li>Email: naresh@chatai.com</li>
+              <li>Phone: +977 9869991666</li>
+              <li>Address: Madane 6 Purkot Daha, Nepal</li>
             </ul>
           </div>
         </div>

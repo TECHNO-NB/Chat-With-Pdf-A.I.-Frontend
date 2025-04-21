@@ -9,15 +9,14 @@ import pdfToText from "@/utils/PdfToText";
 
 const Page: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
+  const [pdfText, setPdfText] = useState<any>("");
   const data = useSelector((state: any) => state.pdfFile);
 
   useEffect(() => {
-
-    const changePdfToText=async()=>{
-
-   const text=await pdfToText(data.file);
-   console.log("pdfTOTExt",text)
-    }
+    const changePdfToText = async () => {
+      const text = await pdfToText(data.file);
+      setPdfText(text);
+    };
     changePdfToText();
     fetch(fileUrl)
       .then((response) => response.blob())
@@ -42,7 +41,7 @@ const Page: React.FC = () => {
           )}
         </div>
         <div className="right w-[100%] sm:w-[50%] flex items-center justify-center  overflow-hidden  border-black h-[50%] sm:h-[100%] px-4">
-          <ChatComp />
+          <ChatComp message={pdfText}/>
         </div>
       </div>
     </MaxWidthWrapper>

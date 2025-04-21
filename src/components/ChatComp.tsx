@@ -7,8 +7,9 @@ import { BsRobot, BsChatDots } from "react-icons/bs";
 import AiLoader from "./AllLoader";
 import ButtonLoader from "./ButtonLoader";
 import axios from "axios";
+import toast from "react-hot-toast";
 
-const ChatComp = () => {
+const ChatComp = ({ message }: any) => {
   const [chatMessages, setChatMessages] = useState<any[]>([]);
   const [userInput, setUserInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -18,16 +19,25 @@ const ChatComp = () => {
     if (!userInput.trim()) return;
 
     setIsLoading(true);
+    if (userInput.split(" ").length > 7) {
+      toast.error("Limit only 7 words.");
+      setIsLoading(false);
+      return;
+    }
     const userMessage = { sender: "user", message: userInput };
     setChatMessages((prev) => [...prev, userMessage]);
 
     try {
       const res = await axios.post("/api/ask-ai", {
         chatMessages: userInput,
+        pdfText: message,
       });
 
       const aiMessage = res.data?.message || "No response from AI.";
-      setChatMessages((prev) => [...prev, { sender: "ai", message: aiMessage }]);
+      setChatMessages((prev) => [
+        ...prev,
+        { sender: "ai", message: aiMessage },
+      ]);
     } catch (error) {
       console.error(error);
       setChatMessages((prev) => [
@@ -66,7 +76,9 @@ const ChatComp = () => {
         {chatMessages.map((msg, idx) => (
           <div
             key={idx}
-            className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
+            className={`flex ${
+              msg.sender === "user" ? "justify-end" : "justify-start"
+            }`}
           >
             <div className="flex items-start space-x-2 max-w-[80%]">
               {msg.sender === "user" ? (
@@ -106,7 +118,13 @@ const ChatComp = () => {
             disabled={isLoading}
             className="w-full sm:w-auto px-5 py-2 text-sm flex items-center gap-2"
           >
-            {isLoading ? <ButtonLoader /> : <>Send <AiOutlineSend /></>}
+            {isLoading ? (
+              <ButtonLoader />
+            ) : (
+              <>
+                Send <AiOutlineSend />
+              </>
+            )}
           </Button>
         </div>
       </div>
