@@ -82,7 +82,7 @@ const SignInPage = () => {
       <div className="flex items-center justify-center flex-col w-full">
         <h1 className="font-bold text-3xl text-blue-600">Signin</h1>
         {loader ? <AiLoader /> : null}
-        <div className="w-[70%] sm:w-[40%] lg:w-[30%] flex flex-col gap-2 sm:gap-0 text-center">
+        <div className="w-[85%] sm:w-[40%] lg:w-[30%] flex flex-col gap-2 sm:gap-0 text-center">
           <Input
             onChange={(e) => setEmail(e.target.value)}
             className="border-2 border-black mt-2 w-full"
