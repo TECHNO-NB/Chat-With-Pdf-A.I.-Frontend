@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar/Navbar";
 import ClientProvider from "@/components/ClientProvider";
 import { Toaster } from "react-hot-toast";
 
+import UserVerifier from "@/components/UserVerifier";
 
 // Load local fonts
 const geistSans = localFont({
@@ -22,7 +23,6 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Chat AI.",
   description: "Chat with pdf using Chat AI.",
-
 };
 
 export default function RootLayout({
@@ -32,12 +32,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-      </head>
+      <head></head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ClientProvider>
+          <UserVerifier />
           <Navbar />
           {children}
           <Toaster />

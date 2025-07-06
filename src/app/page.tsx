@@ -7,8 +7,7 @@ import useVerifyUser from "@/hooks/useVerfifyUser";
 
 export default function Home() {
   
-    useVerifyUser();
-
+   
 
   return (
     <div className="bg-[#F7F7F7] ">

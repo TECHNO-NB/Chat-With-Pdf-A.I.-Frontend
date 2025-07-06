@@ -19,13 +19,14 @@ const Page = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [file, setFile] = useState<File | null>(null);
   const [title, setTitle] = useState<string>("");
-const user = useSelector((state: RootState) => state.user);
-
-useEffect(() => {
-  if(!user.isLogin && !user.email) return router.push("/auth")
-  },[user])
-
+  const user = useSelector((state: RootState) => state.user);
   const router = useRouter();
+
+  useEffect(() => {
+    if (!user.isLogin || !user.email) {
+      router.push("/auth");
+    }
+  }, [user, router]);
 
   const isDocRefresh = useSelector(
     (state: any) => state.docRefresh.isDocRefresh
@@ -65,7 +66,7 @@ useEffect(() => {
 
   const addNewDocument = (): void => {
     if (docData.length >= 3) {
-      toast.error("Free limit hit. Upgrade to continue")
+      toast.error("Free limit hit. Upgrade to continue");
       router.push("/pricing");
       return;
     }
