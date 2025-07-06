@@ -29,7 +29,7 @@ const Page = ({ params }: { params: Promise<{ email: string }> }) => {
   }, [params]);
 
   useEffect(() => {
-    if (data.success) {
+    if (data) {
       router.push("/dashboard");
       toast.success("Email verified successfully");
     } else {
