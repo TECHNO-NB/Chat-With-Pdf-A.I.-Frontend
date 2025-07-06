@@ -5,6 +5,7 @@ import ButtonLoader from "./ButtonLoader";
 import { useDispatch } from "react-redux";
 import { refreshDoc } from "@/redux/DocRefresh";
 import toast from "react-hot-toast";
+import pdfToText from "@/utils/PdfToText";
 
 interface ModalProps {
   isOpen: boolean;
@@ -16,8 +17,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onAddDoc }) => {
   const [title, setTitle] = useState<string>("");
   const [file, setFile] = useState<File | null>(null);
   const dispatch = useDispatch();
- console.log(onAddDoc);
-  const{ isLoading, data, createNewDoc } = useCreateDoc({ title, file });
+
+  const { isLoading, data, createNewDoc } = useCreateDoc({ title, file });
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -32,12 +33,15 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onAddDoc }) => {
   };
 
   useEffect(() => {
-    if (data) {
-      onClose();
-      toast.success("Doc create successfully");
-      dispatch(refreshDoc(true));
-    } else {
-    }
+    (async () => {
+      if (data) {
+        onClose();
+        toast.success("Doc create successfully");
+        await pdfToText(data.data.file);
+      } else {
+        
+      }
+    })();
   }, [data]);
 
   if (!isOpen) return null;

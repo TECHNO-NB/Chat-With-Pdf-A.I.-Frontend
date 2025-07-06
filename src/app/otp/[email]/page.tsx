@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import useVerifyEmailApi from "@/hooks/useVerifyEmailApi";
 import ButtonLoader from "@/components/ButtonLoader";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const Page = ({ params }: { params: Promise<{ email: string }> }) => {
   const [email, setEmail] = useState<string | null>(null);
@@ -19,6 +20,7 @@ const Page = ({ params }: { params: Promise<{ email: string }> }) => {
 
   // Initialize the useVerifyEmailApi hook
   const { isLoading, data, verifyEmail } = useVerifyEmailApi({ code });
+  const router=useRouter();
 
   useEffect(() => {
     params.then((resolvedParams) => {
@@ -27,7 +29,8 @@ const Page = ({ params }: { params: Promise<{ email: string }> }) => {
   }, [params]);
 
   useEffect(() => {
-    if (data) {
+    if (data.success) {
+      router.push("/dashboard");
       toast.success("Email verified successfully");
     } else {
       toast.error("error");

@@ -2,7 +2,10 @@ import React from "react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import PricingComp from "@/components/PricingComp";
 
-const page: React.FC = () => {
+
+const page: React.FC = async() => {
+
+
   return (
     <MaxWidthWrapper className="mt-6 w-full  ">
       <div className="text-center">

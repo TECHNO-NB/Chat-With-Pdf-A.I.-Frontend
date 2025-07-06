@@ -5,7 +5,8 @@ import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import fileUrl from "@/assets/A 8081.pdf";
 import ChatComp from "@/components/ChatComp";
 import { useSelector } from "react-redux";
-import pdfToText from "@/utils/PdfToText";
+
+import pdfToTextUi from "@/utils/PdfToTextUI";
 
 const Page: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -14,7 +15,7 @@ const Page: React.FC = () => {
 
   useEffect(() => {
     const changePdfToText = async () => {
-      const text = await pdfToText(data.file);
+      const text = await pdfToTextUi(data.file);
       setPdfText(text);
     };
     changePdfToText();
@@ -41,7 +42,7 @@ const Page: React.FC = () => {
           )}
         </div>
         <div className="right w-[100%] sm:w-[50%] flex items-center justify-center  overflow-hidden  border-black h-[50%] sm:h-[100%] px-4">
-          <ChatComp message={pdfText}/>
+          <ChatComp message={pdfText} />
         </div>
       </div>
     </MaxWidthWrapper>

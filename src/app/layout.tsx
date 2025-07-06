@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar/Navbar";
 import ClientProvider from "@/components/ClientProvider";
 import { Toaster } from "react-hot-toast";
 
+
 // Load local fonts
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

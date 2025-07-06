@@ -1,22 +1,57 @@
+"use client"
 import React from "react";
 import { Button } from "./ui/button";
 import { BiCheck } from "react-icons/bi";
 import { FiMinus } from "react-icons/fi";
+import toast from "react-hot-toast";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+
 
 interface IPaid {
   paid: boolean;
 }
 
-const PricingComp: React.FC<IPaid> = ({ paid }) => {
+const PricingComp: React.FC<IPaid> = async ({ paid }) => {
+ 
+
   const PriceData = {
     header: paid ? "Upgrade now" : null,
-    getPdf: paid ? "50 PDFs/mon includes ?" : "5 PDFs/mon includes ?",
+    getPdf: paid ? "50 PDFs/mon includes ?" : "3 PDFs/mon includes ?",
     getPagePerPdf: paid ? "14 pages per PDF" : "5 pages per PDF",
-    pdfSize:paid ? "14 MB file size limit" : "4 MB file size limit",
+    pdfSize: paid ? "14 MB file size limit" : "4 MB file size limit",
+    price: paid ? 14 : 0,
   };
 
+  
+
+
+
+async function makePayment(data: any): Promise<any> {
+  const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISABLE_KEY!);
+  axios.defaults.withCredentials = true;
+  console.log(process.env.BACKEND_URL);
+  const payment = await axios.post(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/payment/sessions`,
+    {
+      price: data.price,
+    }
+  );
+
+  const session = payment.data;
+console.log("sessions id",session.data.id)
+  const result = await stripe?.redirectToCheckout({
+    sessionId: session.data.id,
+  });
+  if (result?.error) {
+    console.log(result.error);
+  }
+}
+
+
+
   return (
-    <div className="w-full h-full mt-4 text-center flex justify-center hover:shadow-2xl hover:rounded-lg">
+    <div className="w-full h-full mt-4 text-center flex justify-center hover:shadow-2xl hover:rounded-lg p-4 sm:p-0">
       <div
         className={`div h-[30em] w-[20em] text-center ${
           paid ? "border-blue-700" : "border-2"
@@ -56,7 +91,7 @@ const PricingComp: React.FC<IPaid> = ({ paid }) => {
 
           <div className="flex gap-1 items-center">
             {paid ? (
-              <BiCheck className="text-2xl text-blue-600" />
+              <BiCheck className="text-2xl text-blue-600"  />
             ) : (
               <FiMinus className="text-2xl text-gray-400" />
             )}
@@ -76,7 +111,16 @@ const PricingComp: React.FC<IPaid> = ({ paid }) => {
             </p>
           </div>
         </div>
-        <Button className="w-[80%] mt-4 bg-blue-700">Buy now</Button>
+        {paid ? (
+          <Button onClick={()=>makePayment(PriceData)} className={`bg-blue-700 w-[80%] mt-4 } `}>Buy now</Button>
+        ) : (
+          <Button
+            onClick={() => toast.success("LogIn to get free")}
+            className="bg-blue-700 w-[80%] mt-4"
+          >
+            Free
+          </Button>
+        )}
       </div>
     </div>
   );

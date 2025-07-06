@@ -9,10 +9,7 @@ export async function middleware(request: NextRequest) {
   let decodedAccessToken: JwtPayload | null = null;
   let decodedRefreshToken: JwtPayload | null = null;
 
-  if(!decodedAccessToken && !decodedRefreshToken){
-    
-  }
-
+  // Decode access token
   try {
     if (accessToken) {
       decodedAccessToken = jwtDecode<JwtPayload>(accessToken);
@@ -21,6 +18,7 @@ export async function middleware(request: NextRequest) {
     console.error("Invalid access token:", error);
   }
 
+  // Decode refresh token
   try {
     if (refreshToken) {
       decodedRefreshToken = jwtDecode<JwtPayload>(refreshToken);
@@ -29,12 +27,27 @@ export async function middleware(request: NextRequest) {
     console.error("Invalid refresh token:", error);
   }
 
+  const pathname = request.nextUrl.pathname;
 
-  if (!accessToken && !refreshToken && request.nextUrl.pathname.startsWith("/dashboard")) {
-    return NextResponse.redirect(new URL("/auth", request.url));
+  // 🚫 Redirect unauthenticated users trying to access protected routes
+  if (!decodedAccessToken && !decodedRefreshToken && pathname.startsWith("/dashboard")) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/auth";
+    return NextResponse.redirect(url);
   }
-` `
-  // if (!accessToken && !refreshToken && request.nextUrl.pathname.startsWith("/doc")) {
-  //   return NextResponse.rewrite(new URL("/auth", request.url));
-  // }
+
+  // ✅ Redirect authenticated users away from login page
+  if ((decodedAccessToken || decodedRefreshToken) && pathname === "/auth") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/dashboard";
+    return NextResponse.redirect(url);
+  }
+
+  // ✅ Allow the request to proceed
+  return NextResponse.next();
 }
+
+// 🛡️ Define routes to apply middleware
+export const config = {
+  matcher: ["/dashboard/:path*", "/auth"],
+};

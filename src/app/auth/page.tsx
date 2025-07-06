@@ -51,18 +51,17 @@ const SignInPage = () => {
         toast.success("verify email");
       }
     } else if (error) {
-      console.error("Login error:", error);
+      // console.error("Login error:", error);
       toast.error("Invalid credentials");
     }
   }, [data, error, router]);
-
 
   const loginWithGoogleFun = async (token: JwtPayload) => {
     await loginWithGoogle({
       url: "api/v1/users/login-with-google",
       token: token,
     });
-    if (res) {
+    if (res?.data) {
       console.log(res);
       const user: IUser = {
         _id: res.data._id,
@@ -71,8 +70,8 @@ const SignInPage = () => {
         plan: res.data.isPremium,
         isLogin: true,
       };
-      dispatch(login(user));
       router.push("/dashboard");
+      dispatch(login(user));
       toast.success("login success");
     }
   };

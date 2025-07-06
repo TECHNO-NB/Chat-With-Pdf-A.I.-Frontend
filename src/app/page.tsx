@@ -3,7 +3,7 @@
 import LadingPageComp from "@/components/LadingPageComp";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import useVerifyUser from "@/hooks/useVerfifyUser";
-import { useEffect } from "react";
+
 
 export default function Home() {
   
