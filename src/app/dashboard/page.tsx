@@ -11,6 +11,7 @@ import { motion, Variants } from "framer-motion";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 const Page = () => {
   const [docData, setDocData] = useState<any[]>([]);
@@ -18,6 +19,11 @@ const Page = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [file, setFile] = useState<File | null>(null);
   const [title, setTitle] = useState<string>("");
+const user = useSelector((state: RootState) => state.user);
+
+useEffect(() => {
+  if(!user.isLogin && !user.email) return router.push("/auth")
+  },[user])
 
   const router = useRouter();
 
