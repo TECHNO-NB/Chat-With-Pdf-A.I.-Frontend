@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import useApiRequest from "@/hooks/useApiRequest";
 import toast from "react-hot-toast";
 import ButtonLoader from "@/components/ButtonLoader";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { IUser, login } from "@/redux/UserSlice";
 import { jwtDecode, JwtPayload } from "jwt-decode";
 
@@ -15,14 +15,22 @@ import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 
 import useLoginWithGoogle from "@/hooks/useLoginWithGoogle";
 import AiLoader from "@/components/AllLoader";
+import { RootState } from "@/redux/store";
+
 const SignInPage = () => {
   const router = useRouter();
-
+   const user = useSelector((state: RootState) => state.user);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const dispatch = useDispatch();
   const { loginWithGoogle, res, loader } = useLoginWithGoogle();
 
+  useEffect(() => {
+  if(user.isLogin && user.email){
+    return router.push("/dashboard");
+  }
+  }, [user,router])
+  
   const { data, isLoading, error, makeRequest } = useApiRequest(
     "/api/v1/users/auth",
     "POST"
