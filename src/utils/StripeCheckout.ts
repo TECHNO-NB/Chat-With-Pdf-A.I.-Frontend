@@ -6,7 +6,7 @@ import axios from "axios";
 async function makePayment(data: any): Promise<any> {
   const stripe = await loadStripe(process.env.STRIPE_PUBLISABLE_KEY!);
   axios.defaults.withCredentials = true;
-  console.log(process.env.BACKEND_URL);
+  
   const payment = await axios.post(
     `${process.env.BACKEND_URL}/api/v1/payment/sessions`,
     {

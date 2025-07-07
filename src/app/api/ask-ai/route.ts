@@ -17,8 +17,8 @@ export async function POST(request: Request) {
       const vectorStore = await QdrantVectorStore.fromExistingCollection(
         embeddings,
         {
-          url: process.env.NEXT_PUBLIC_QRANT_URL!,
-          apiKey: process.env.NEXT_PUBLIC_QDRANT_API_KEY!,
+          url: process.env.QRANT_URL!,
+          apiKey: process.env.QDRANT_API_KEY!,
           collectionName: "chatai-vector",
         }
       );
