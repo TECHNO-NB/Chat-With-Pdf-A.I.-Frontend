@@ -6,7 +6,7 @@ import Navbar from "@/components/navbar/Navbar";
 import ClientProvider from "@/components/ClientProvider";
 import { Toaster } from "react-hot-toast";
 
-import UserVerifier from "@/components/UserVerifier";
+
 
 // Load local fonts
 const geistSans = localFont({
@@ -37,7 +37,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ClientProvider>
-          <UserVerifier />
           <Navbar />
           {children}
           <Toaster />

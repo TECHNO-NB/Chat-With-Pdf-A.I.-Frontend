@@ -23,7 +23,7 @@ const Page = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!user.isLogin || !user.email) {
+    if (!user.isLogin) {
       router.push("/auth");
     }
   }, [user, router]);

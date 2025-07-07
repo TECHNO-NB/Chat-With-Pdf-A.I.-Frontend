@@ -26,7 +26,7 @@ const SignInPage = () => {
   const { loginWithGoogle, res, loader } = useLoginWithGoogle();
 
   useEffect(() => {
-  if(user.isLogin && user.email){
+  if(user.isLogin){
     return router.push("/dashboard");
   }
   }, [user,router])
