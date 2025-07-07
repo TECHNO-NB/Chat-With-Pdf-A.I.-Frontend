@@ -14,11 +14,13 @@ export async function POST(request: Request) {
         apiKey: process.env.GEMINI_API_KEY!,
       });
     
+      console.log(process.env.QRANT_URL!,process.env.QRANT_API_KEY!);
+
       const vectorStore = await QdrantVectorStore.fromExistingCollection(
         embeddings,
         {
           url: process.env.QRANT_URL!,
-          apiKey: process.env.QDRANT_API_KEY!,
+          apiKey: process.env.QRANT_API_KEY!,
           collectionName: "chatai-vector",
         }
       );

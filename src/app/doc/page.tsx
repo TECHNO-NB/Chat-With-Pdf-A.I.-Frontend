@@ -33,7 +33,7 @@ const Page: React.FC = () => {
 
   return (
     <MaxWidthWrapper className="mt-2">
-      <div className="w-full h-[88vh] sm:h-[90vh]  flex flex-wrap">
+      <div className="w-full h-[90svh] sm:h-[90vh]  flex flex-wrap">
         <div className="left w-[100%] flex items-center shadow-1xl justify-center px-4 py-1 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6  overflow-x-hidden overflow-y-auto sm:w-[50%] h-[50%] sm:h-full">
           {file ? (
             <DocDetailComp doc={data.file} size={false} />

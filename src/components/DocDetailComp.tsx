@@ -36,7 +36,7 @@ const DocDetailComp: React.FC<IDocType> = ({ doc, size }) => {
   return (
     <div className="w-full h-full bg-white rounded-md shadow flex flex-col items-center">
       {!size ? (
-        <div className="h-10 w-full border-b border-zinc-200 flex items-center justify-between px-2 ">
+        <div className="h-10 w-full border-b border-zinc-200 flex items-center justify-between px-2 sticky top-0 z-10 bg-white border-t ">
           Page {pageNumber} of {numPages}
           <div className="flex gap-2">
             <Button className="h-6" onClick={handlePrev}>
