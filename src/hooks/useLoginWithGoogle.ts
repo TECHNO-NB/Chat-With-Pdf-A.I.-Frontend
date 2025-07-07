@@ -15,6 +15,7 @@ const useLoginWithGoogle = () => {
   const loginWithGoogle = async ({ url, token }: IProps) => {
     setLoader(true);
     try {
+       axios.defaults.withCredentials = true;
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/${url}`,
         { token }

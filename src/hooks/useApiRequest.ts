@@ -17,6 +17,7 @@ const useApiRequest = (url: string, requestType: RequestType = "GET") => {
         let response;
         switch (requestType) {
           case "POST":
+             axios.defaults.withCredentials = true;
             response = await axios.post(
               `${process.env.NEXT_PUBLIC_BACKEND_URL}${url}`,
               body

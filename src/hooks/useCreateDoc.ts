@@ -1,5 +1,5 @@
 import axios from "axios";
-import  { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 const useCreateDoc = ({ title, file }: { title: string; file: any }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -12,7 +12,7 @@ const useCreateDoc = ({ title, file }: { title: string; file: any }) => {
 
       formData.append("title", title);
       formData.append("file", file);
-      console.log(title, file);
+      
       axios.defaults.withCredentials = true;
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/doc/create-doc`,
@@ -25,7 +25,7 @@ const useCreateDoc = ({ title, file }: { title: string; file: any }) => {
       );
       setIsLoading(false);
       setData(res.data);
-      console.log(res.data);
+    
     } catch (error) {
       console.log(error);
       setIsLoading(false);
